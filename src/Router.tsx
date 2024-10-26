@@ -1,34 +1,56 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./pages/Layout";
-import { Home } from "./pages/Home";
 import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
 import { SuccessReg } from "./pages/SuccessReg";
+import { UserProfile } from "./pages/UserProfile";
+import { Suspense } from "react";
+import { Spinner } from "./components/Spinner";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 
-// import { Suspense } from "react";
-// import { Spinner } from "../components/Spinner";
 
-// Skapa routern med olika vägar
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // Grundläggande layout som innehåller navigering och Outlet
+    element: <Layout />,
     children: [
       {
-        path: "/", // Home route
-        element: <Home />,
+        path: "/userStartPage",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <ProtectedRoute /> 
+          </Suspense>
+        ),
+        children: [
+          {
+            path: "", 
+            element: <UserProfile />,
+          },
+        ],
+      },      
+      {
+        path: "/register",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <Register />
+          </Suspense>
+        ),
       },
       {
-        path: "/register", // Register route
-        element: <Register />,
+        path: "/login",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <Login />
+          </Suspense>
+        ),
       },
       {
-        path: "/login", // Login route
-        element: <Login />,
-      },
-      {
-        path: "/successReg", // Login route
-        element: <SuccessReg />,
+        path: "/successReg",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <SuccessReg />
+          </Suspense>
+        ),
       },
     ],
   },

@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useUserDispatch } from '../contexts/UserContext';
 
 export const Login: React.FC = () => {
-  const [loginData, setLoginData] = useState({
-    userName: '',
-    password: ''
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setLoginData({
-      ...loginData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const userDispatch = useUserDispatch();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,45 +14,49 @@ export const Login: React.FC = () => {
     try {
       const response = await fetch('http://localhost:3000/api/signIn', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(loginData),
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include', 
+        body: JSON.stringify({ email, password }),
       });
 
-      const result = await response.json();
-      if (response.ok) {
-        alert('Logged in successfully!');
+      const data = await response.json();
+      if (response.ok && data.user) {
+        userDispatch({ type: 'SET_USER', payload: data.user });
+        navigate(`/userStartPage`);
       } else {
-        alert(result.error || 'Login failed');
+        console.error("Login failed:", data.error);
+        alert(data.error || 'Login failed');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error during login:", error);
+      alert('An error occurred during login. Please try again.');
     }
   };
 
   return (
-    <div>
-      <h2 className="heading">Login</h2>
-      <form className='standard-form' onSubmit={handleSubmit}>
-        <input
-        className='input-field'
-          type="text"
-          name="userName"
-          placeholder="Username"
-          value={loginData.userName}
-          onChange={handleChange}
-        />
-        <input
-        className='input-field'
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={loginData.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <>
+     <h2 className='heading'>Logga in</h2>
+    <form  className="standard-form" onSubmit={handleSubmit}>
+      <input 
+       className='input-field'
+        type="email" 
+        value={email} 
+        onChange={(e) => setEmail(e.target.value)} 
+        placeholder="Email" 
+        required 
+      />
+      <input 
+       className='input-field'
+        type="password" 
+        value={password} 
+        onChange={(e) => setPassword(e.target.value)} 
+        placeholder="Password" 
+        required 
+      />
+      <button className="btn" type="submit">Logga in</button>
+    </form>
+    
+    </>
+   
   );
 };
