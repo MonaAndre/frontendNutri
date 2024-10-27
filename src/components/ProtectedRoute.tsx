@@ -1,7 +1,8 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { useUserState } from '../contexts/UserContext';
 import { Spinner } from '../components/Spinner';
+import { useUserState } from '../hooks/useUserState';
+
 
 export const ProtectedRoute: React.FC = () => {
   const { isLoggedIn, userDetails } = useUserState();

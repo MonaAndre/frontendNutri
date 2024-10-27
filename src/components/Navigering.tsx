@@ -1,29 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useUserState, useUserDispatch } from "../contexts/UserContext";
+import { signOut } from "../services/authService";
+import { UserActionType } from "../redusers/UserReduser";
+import { useUserState } from "../hooks/useUserState";
+import { useUserDispatch } from "../hooks/useUserDispatch";
 
-export const Navigering = () => {
+export const Navigation = () => {
     const userState = useUserState();
     const userDispatch = useUserDispatch();
     const navigate = useNavigate();
 
     const handleLogOut = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/signOut', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include',
-            });
-
-            const result = await response.json();
-            if (response.ok) {
-                userDispatch({ type: 'LOGOUT' });
-                navigate('/login');
-                alert('Logged out successfully!');
-            } else {
-                alert(result.error || 'Logout failed');
-            }
+            await signOut(); 
+            userDispatch({ type: UserActionType.LOGOUT });
+            navigate('/login');
+            alert('Logged out successfully!');
         } catch (error) {
             console.error('Error during logout:', error);
             alert('An error occurred during logout. Please try again.');
@@ -54,4 +45,4 @@ export const Navigering = () => {
             )}
         </>
     );
-}
+};

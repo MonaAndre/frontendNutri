@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import { Navigering } from '../components/Navigering';
+import { Navigation } from '../components/Navigering';
 
 export const Layout = () => {
     return (
         <div className='h-screen flex flex-col justify-between'>
             <header>
-               <Navigering/>
+               <Navigation/>
             </header>
             <main>
                 <div className="container px-5">
