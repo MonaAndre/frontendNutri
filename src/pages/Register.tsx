@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import validator from 'validator';
 import { useNavigate } from 'react-router-dom';
+import { IUserResponse } from '../models/IUserResponse';
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -85,11 +86,15 @@ export const Register = () => {
         body: JSON.stringify(userData),
       });
 
-      const result = await response.json();
+      const result:IUserResponse = await response.json();
+      if (result.user.email) {
+      localStorage.setItem("CreatedUsersMail", result.user.email||'')
+      }
+
       if (response.ok) {
         navigate('/successReg');
       } else {
-        setErrorMessage(result.error || 'Registration failed');
+        setErrorMessage('Registration failed');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -98,38 +103,51 @@ export const Register = () => {
   };
 
   return (
-    <div>
+    <section>
       <h2 className='heading'>Registrering</h2>
       <form className='standard-form' onSubmit={handleSubmit}>
-        <input
-          className='input-field'
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={userData.firstName}
-          onChange={handleChange}
-        />
-        <input
-          className='input-field'
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={userData.email}
-          onChange={handleChange}
-        />
-        {errors.email && <p className='failed'>{errors.email}</p>}
-        <input
-          className='input-field'
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={userData.password}
-          onChange={handleChange}
-        />
-        {errors.password && <p className='failed'>{errors.password}</p>}
-        <button type="submit">Skapa konto</button>
+        <label className='input-group' htmlFor="firstName">
+          <span>Name</span>
+          <input
+            className='input-field'
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={userData.firstName}
+            onChange={handleChange}
+          />
+        </label>
+
+        <label className='input-group' htmlFor="email">
+          <span>Email</span>
+          <input
+            className='input-field'
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={userData.email}
+            onChange={handleChange}
+          />
+          {errors.email && <p className='failed text-sm'>{errors.email}</p>}
+        </label>
+
+        <label className='input-group' htmlFor="password">
+          <span>Password</span>
+          <input
+            className='input-field'
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={userData.password}
+            onChange={handleChange}
+          />
+          {errors.password && <p className='failed'>{errors.password}</p>}
+        </label>
+
+
+        <button className='btn primary-btn' type="submit">Skapa konto</button>
         {errorMessage && <p className='failed'>{errorMessage}</p>}
       </form>
-    </div>
+    </section>
   );
 }

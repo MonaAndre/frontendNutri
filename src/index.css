@@ -1,110 +1,83 @@
+@import'../src/style/buttons.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-*,*::after,*::before{
+*,
+*::after,
+*::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-.standard-form{
-  @apply flex flex-col gap-5 m-10 border rounded-md border-zinc-300 p-5
+body {
+  @apply bg-slate-100 dark:bg-slate-800 text-gray-800 dark:text-slate-200
 }
 
-.input-field{
-  @apply p-3 rounded-md
-}
-.heading{
-  @apply text-3xl font-bold underline text-center mb-5
+section {
+  @apply w-full sm:w-full md:w-3/4 mx-auto lg:w-1/2
 }
 
-nav{
-  @apply w-full
-}
-.nav-list{
-@apply flex flex-row justify-around bg-slate-900 p-10 rounded-md w-full
-}
-.nav-list__item{
-@apply p-5 border border-slate-200 rounded-md 
+.standard-form {
+  @apply min-w-full flex flex-col gap-5 mx-auto border rounded-md border-zinc-300 dark:border-zinc-600 bg-slate-50 dark:bg-slate-700 p-5
 }
 
-.footer{
-  @apply flex flex-row justify-around bg-slate-900 p-10 rounded-md w-full
+.input-group {
+  @apply flex flex-col gap-1 mx-auto w-3/4
 }
 
-.success{
+.input-field {
+  @apply p-3 rounded-md bg-slate-200 dark:bg-slate-800 
+}
+
+.heading {
+  @apply text-3xl text-center mb-5
+}
+
+
+.nav-list {
+  @apply flex flex-row justify-around p-10 rounded-md w-full
+}
+
+.header {
+  @apply bg-slate-900 dark:bg-slate-900 p-4 flex flex-row justify-around sticky top-0;
+}
+
+.footer {
+  @apply bg-slate-800 dark:bg-slate-900 text-slate-200 flex flex-col md:flex-row items-center justify-around
+}
+
+.nav-list__item {
+  @apply p-5 border border-slate-200 rounded-md
+}
+
+.footer {
+  @apply  bg-slate-900 mt-10 flex justify-center items-center
+}
+
+.footer-box{
+  @apply flex flex-col md:flex-row gap-3 justify-around w-full p-3 text-sm items-center
+}
+
+.success {
   @apply text-green-600
 }
-.failed{
+
+.failed {
   @apply text-red-800
 }
 
-.info-card{
+.info-card {
   @apply bg-slate-600 p-5 rounded-lg
 }
 
-.btn{
-  @apply mt-6 bg-slate-600 p-3 w-1/2 mx-auto
+.danger-zone {
+  @apply border rounded-lg border-red-800 p-4 bg-slate-50 dark:bg-slate-700
+}
+
+.heading-danger {
+  @apply text-xl text-red-800 mt-2 mb-5;
 }

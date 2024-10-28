@@ -1,4 +1,8 @@
+// tailwind.config.js
+
 /** @type {import('tailwindcss').Config} */
+import preline from 'preline/plugin';
+
 export default {
   content: [
     "./index.html",
@@ -10,5 +14,7 @@ export default {
       center: true,
     },
   },
-  plugins: [],
+  plugins: [
+    preline,
+  ],
 }

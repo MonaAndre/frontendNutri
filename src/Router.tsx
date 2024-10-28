@@ -7,7 +7,8 @@ import { UserProfile } from "./pages/UserProfile";
 import { Suspense } from "react";
 import { Spinner } from "./components/Spinner";
 import { ProtectedRoute } from "./components/ProtectedRoute";
-
+import { UserSettings } from "./pages/UserSettings";
+import { SuccessDeleteUser } from "./pages/SuccessDeleteUser";
 
 export const router = createBrowserRouter([
   {
@@ -18,16 +19,20 @@ export const router = createBrowserRouter([
         path: "/userStartPage",
         element: (
           <Suspense fallback={<Spinner />}>
-            <ProtectedRoute /> 
+            <ProtectedRoute />
           </Suspense>
         ),
         children: [
           {
-            path: "", 
+            path: "/userStartPage/userProfile",  // Fullständig väg för att matcha navigate
             element: <UserProfile />,
           },
+          {
+            path: "/userStartPage/userSettings",  // Fullständig väg för att matcha navigate
+            element: <UserSettings />,
+          },
         ],
-      },      
+      },
       {
         path: "/register",
         element: (
@@ -49,6 +54,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Spinner />}>
             <SuccessReg />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/successDeleteUser",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <SuccessDeleteUser />
           </Suspense>
         ),
       },

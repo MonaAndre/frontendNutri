@@ -1,0 +1,34 @@
+/* Buttons */
+.form-btn__container {
+    @apply w-full sm:w-1/2 my-2 md:mt-7 sm:mx-auto;
+  }
+  .btnInfo__container {
+    @apply w-1/3 flex flex-col lg:flex-row gap-4;
+  }
+  
+  .dangerzone-btn__container {
+    @apply w-1/3 mt-2 md:mt-4 mx-auto;
+  }
+  
+  /* General button styling */
+  .btn {
+    @apply py-2.5 px-2.5 inline-flex w-full m-auto gap-x-2 text-sm justify-center items-center font-semibold rounded-lg border disabled:opacity-50 disabled:pointer-events-none;
+  }
+  
+  /* Primary, Secondary, and Tertiary Button styles */
+  .primary-btn {
+    @apply bg-blue-600 justify-center text-white border-transparent hover:bg-blue-700 focus:bg-blue-400 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:bg-blue-400;
+  }
+  
+  .secondary-btn {
+    @apply border-blue-600 justify-center border-2 hover:bg-blue-700 hover:text-white focus:bg-blue-400 dark:focus:bg-blue-400;
+  }
+  
+  .tetiary-btn {
+    @apply bg-gray-100 justify-center text-gray-700 border-gray-300 hover:bg-gray-200 focus:bg-blue-100 dark:focus:bg-gray-800 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-500;
+  }
+  
+  .danger-btn {
+    @apply bg-gray-100 text-center text-red-600 border-gray-200 hover:bg-red-600 hover:text-white focus:border-red-600 dark:focus:border-red-600 dark:bg-slate-800 dark:text-red-400 dark:border-red-500 dark:hover:bg-red-500 dark:hover:text-white;
+  }
+  

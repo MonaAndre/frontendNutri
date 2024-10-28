@@ -17,7 +17,7 @@ export const Login: React.FC = () => {
       const data = await signIn(email, password); // data är av typen IUserResponse
       if (data.user) {
         userDispatch({ type: UserActionType.SET_USER, payload: data.user });
-        navigate(`/userStartPage`);
+        navigate(`/userStartPage/userProfile`);
       } else {
         alert('Login failed');
       }
@@ -29,26 +29,37 @@ export const Login: React.FC = () => {
 
   return (
     <>
-      <h2 className='heading'>Logga in</h2>
-      <form className="standard-form" onSubmit={handleSubmit}>
-        <input 
-          className='input-field'
-          type="email" 
-          value={email} 
-          onChange={(e) => setEmail(e.target.value)} 
-          placeholder="Email" 
-          required 
-        />
-        <input 
-          className='input-field'
-          type="password" 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          placeholder="Password" 
-          required 
-        />
-        <button className="btn" type="submit">Logga in</button>
-      </form>
+      <section>
+        <h2 className='heading'>Logga in</h2>
+        <form className="standard-form" onSubmit={handleSubmit}>
+          <label className='input-group' htmlFor="email">
+            <span>Email</span>
+            <input
+              className='input-field'
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              required
+            />
+          </label>
+
+          <label className='input-group' htmlFor="password">
+            <span>Password</span>
+            <input
+              className='input-field'
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+            />
+          </label>
+
+          <button className="btn primary-btn" type="submit">Logga in</button>
+        </form>
+      </section>
+
     </>
   );
 };
