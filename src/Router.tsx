@@ -24,11 +24,11 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: "/userStartPage/userProfile",  // Fullständig väg för att matcha navigate
+            path: "/userStartPage/userProfile", 
             element: <UserProfile />,
           },
           {
-            path: "/userStartPage/userSettings",  // Fullständig väg för att matcha navigate
+            path: "/userStartPage/userSettings", 
             element: <UserSettings />,
           },
         ],

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../services/authService';
-import { UserActionType } from '../redusers/UserReduser';
 import { useUserDispatch } from '../hooks/useUserDispatch';
+import { UserActionType } from '../reducers/UserReducer';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');

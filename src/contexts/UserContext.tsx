@@ -1,6 +1,7 @@
 import { createContext } from 'react';
 import { IUser } from '../models/IUser';
-import { IUserAction } from '../redusers/UserReduser';
+import { IUserAction } from '../reducers/UserReducer';
+
 
 // Definiera state-typ för användaren
 export interface IUserState {

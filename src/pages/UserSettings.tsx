@@ -3,6 +3,7 @@ import { Spinner } from '../components/Spinner';
 import { useUserState } from '../hooks/useUserState';
 import validator from 'validator';
 import { DeleteUser } from '../components/DeleteUser';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 
 
 export const UserSettings = () => {
@@ -126,10 +127,10 @@ export const UserSettings = () => {
                 <h2 className='heading'>Personliga inställningar</h2>
                 <div className="flex flex-col md:flex-row gap-3">
                     <label htmlFor="">Du kan byta en app theme till ljus eller mörk</label>
-                    <button className='btn secondary-btn'>Byt theme till ljust</button>
+                    <ThemeSwitcher />
                 </div>
             </section>
-           <DeleteUser/>
+            <DeleteUser />
 
         </>
 

@@ -76,7 +76,7 @@ export const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
+  
     try {
       const response = await fetch('http://localhost:3000/api/createUserAccount', {
         method: 'POST',
@@ -85,23 +85,28 @@ export const Register = () => {
         },
         body: JSON.stringify(userData),
       });
-
-      const result:IUserResponse = await response.json();
-      if (result.user.email) {
-      localStorage.setItem("CreatedUsersMail", result.user.email||'')
-      }
-
-      if (response.ok) {
+  
+      const result: IUserResponse = await response.json();
+  
+      if (response.ok && result.user?.email) {
+        localStorage.setItem("CreatedUsersMail", result.user.email);
         navigate('/successReg');
+      } else if (response.status === 400) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          email: 'Email already in use'
+        }));
+      } else if (response.status === 500) {
+        setErrorMessage('Server error. Please try again later.');
       } else {
-        setErrorMessage('Registration failed');
+        setErrorMessage('An unexpected error occurred. Please try again');
       }
     } catch (error) {
-      console.error('Error:', error);
-      setErrorMessage('An unexpected error occurred. Please try again')
+      console.error("Error during account creation:", error);
+      setErrorMessage('An unexpected error occurred. Please try again');
     }
   };
-
+  
   return (
     <section>
       <h2 className='heading'>Registrering</h2>

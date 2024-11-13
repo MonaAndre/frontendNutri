@@ -1,6 +1,7 @@
 import { useReducer, useEffect, ReactNode } from 'react';
 import { UserStateContext, UserDispatchContext, initialState } from './UserContext';
-import { UserActionType, userReducer } from '../redusers/UserReduser';
+import { UserActionType, userReducer } from '../reducers/UserReducer';
+
 
 
 interface UserProviderProps {

@@ -7,7 +7,9 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+   './node_modules/preline/preline.js',
   ],
+  darkMode: ['selector', '[data-mode="dark"]'],
   theme: {
     extend: {},
     container: {
@@ -17,4 +19,6 @@ export default {
   plugins: [
     preline,
   ],
+  
 }
+

@@ -4,7 +4,7 @@ import { Spinner } from '../components/Spinner';
 import { useUserState } from '../hooks/useUserState';
 import { useUserDispatch } from '../hooks/useUserDispatch';
 import { getUserDetails } from '../services/authService';
-import { UserActionType } from '../redusers/UserReduser';
+import { UserActionType } from '../reducers/UserReducer';
 
 
 export const UserProfile = () => {
@@ -24,6 +24,7 @@ export const UserProfile = () => {
         }
       } catch (error) {
         console.error('Failed to fetch user details:', error);
+        navigate("/login")
       } finally {
         setLoading(false);
       }

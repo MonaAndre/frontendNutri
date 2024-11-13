@@ -12,7 +12,7 @@
   
   /* General button styling */
   .btn {
-    @apply py-2.5 px-2.5 inline-flex w-full m-auto gap-x-2 text-sm justify-center items-center font-semibold rounded-lg border disabled:opacity-50 disabled:pointer-events-none;
+    @apply py-2.5 px-2.5 inline-flex w-full m-auto gap-x-2 text-sm justify-center items-center font-medium rounded-lg border disabled:opacity-50 disabled:pointer-events-none;
   }
   
   /* Primary, Secondary, and Tertiary Button styles */

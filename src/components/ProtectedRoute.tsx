@@ -2,13 +2,18 @@ import { Navigate, Outlet } from 'react-router-dom';
 import { Spinner } from '../components/Spinner';
 import { useUserState } from '../hooks/useUserState';
 
-
 export const ProtectedRoute = () => {
-  const { isLoggedIn, userDetails } = useUserState();
+  const userState = useUserState();
 
-  if (userDetails === null) {
+  if (userState.isLoggedIn && userState.userDetails === null) {
     return <Spinner />;
   }
+  else if(userState.isLoggedIn && userState.userDetails ){
+    return <><Outlet/> </>
 
-  return isLoggedIn ? <Outlet /> : <Navigate to="/login" replace />;
+  } else{
+    return<>
+    <Navigate to="/userStartPage/userProfile"/></>
+  }
+
 };
