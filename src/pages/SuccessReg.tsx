@@ -7,10 +7,10 @@ export const SuccessReg = () => {
   return (
    
       <div className="bg-slate-200 dark:bg-slate-800 font-thin rounded-lg p-6  mx-auto text-center max-w-md w-full">
-        <h2 className="text-3xl  text-blue-600 mb-4">
+        <h2 className="heading text-blue-600">
           Konto har registrerats!
         </h2>
-        <p className=" text-gray-300 mb-6">
+        <p className=" mb-6">
           En bekräftelse har skickats till din e-postadress: <span className="font-normal">{mail}</span>.
           Vänligen bekräfta din e-post för att aktivera ditt konto.
         </p>
