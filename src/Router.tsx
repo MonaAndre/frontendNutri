@@ -9,6 +9,7 @@ import { Spinner } from "./components/Spinner";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { UserSettings } from "./pages/UserSettings";
 import { SuccessDeleteUser } from "./pages/SuccessDeleteUser";
+import { Home } from "./pages/Home";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Spinner />}>
             <Login />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/",
+        element: (
+          <Suspense fallback={<Spinner />}>
+            <Home />
           </Suspense>
         ),
       },
