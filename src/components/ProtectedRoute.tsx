@@ -15,5 +15,4 @@ export const ProtectedRoute = () => {
     return<>
     <Navigate to="/userStartPage/userProfile"/></>
   }
-
 };

@@ -3,7 +3,7 @@ import { IUser } from '../models/IUser';
 import { IUserAction } from '../reducers/UserReducer';
 
 
-// Definiera state-typ för användaren
+// Definierar state-typ för användaren
 export interface IUserState {
   userDetails: IUser | null;
   isLoggedIn: boolean;

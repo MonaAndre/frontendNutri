@@ -36,6 +36,7 @@ export const checkAuth = async (): Promise<IAuthResponse> => {
 
 export const getUserDetails = async (userId: string): Promise<IUserResponse> => {
   const response = await fetch(`${API_BASE_URL}/getUserDetails/${userId}`, {
+    method: 'POST',
     credentials: 'include',
   });
 

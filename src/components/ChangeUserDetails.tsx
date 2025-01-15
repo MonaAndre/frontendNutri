@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Spinner } from '../components/Spinner';
 import { useUserState } from '../hooks/useUserState';
 import validator from 'validator';
-import { IUser } from '../models/IUser';
+import { IResponse } from '../models/IResponse';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+
 
 export const ChangeUserDetails = () => {
     const userState = useUserState();
@@ -78,24 +80,24 @@ export const ChangeUserDetails = () => {
             setErrorMessage(null);
             setSuccessMessage(null);
 
-            const response = await fetch(`/api/changeUserDetails/${userState.userDetails?.id}`, {
+            const response = await fetch(`${API_BASE_URL}/changeUserDetails/${userState.userDetails?.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 credentials: 'include', // Include cookies for authentication
                 body: JSON.stringify({
-                    email: formValues.email,
                     firstName: formValues.firstName,
+                    email: formValues.email,
                     oldPassword: formValues.oldPassword,
                     newPassword: formValues.password,
                 }),
             });
 
             if (response.ok) {
-                const data:IUser = await response.json();
-                const newEmail=data.email;
-                alert(newEmail);
+                const data:IResponse = await response.json();
+              setSuccessMessage(data.message)
+               
             } else {
                 const errorData = await response.json();
                 setErrorMessage(errorData.error || 'Failed to update user details.');
