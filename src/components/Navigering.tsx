@@ -8,14 +8,14 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/16/solid';
 import { BigLogo } from './BigLogo';
 
 const navigation = [
-  { name: 'Hem', href: '/' },
-  { name: 'Profil', href: '/userStartPage/userProfile', requiresAuth: true },
-  { name: 'Inställningar', href: '/userStartPage/userSettings', requiresAuth: true },
+  { name: 'Hem', href: '/frontendNutri/' },
+  { name: 'Profil', href: '/frontendNutri/userStartPage/userProfile', requiresAuth: true },
+  { name: 'Inställningar', href: '/frontendNutri/userStartPage/userSettings', requiresAuth: true },
 ];
 
 const navigationNotSignedIn = [
-  { name: 'Registrering', href: '/register', requiresAuth: false },
-  { name: 'Logga in', href: '/login', requiresAuth: false },
+  { name: 'Registrering', href: '/frontendNutri/register', requiresAuth: false },
+  { name: 'Logga in', href: '/frontendNutri/login', requiresAuth: false },
 ];
 
 function classNames(...classes: string[]): string {
@@ -32,7 +32,7 @@ export default function Navbar() {
     try {
       await signOut();
       userDispatch({ type: UserActionType.LOGOUT });
-      navigate('/login');
+      navigate('/frontendNutri/login');
     } catch (error) {
       console.error('Error during logout:', error);
     }
@@ -54,7 +54,7 @@ export default function Navbar() {
           <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-between">
             {/* Logo */}
             <div className="flex flex-shrink-0 items-center">
-              <Link to="/" className="text-white text-xl font-semibold">
+              <Link to="/frontendNutri/" className="text-white text-xl font-semibold">
                 {/* Logo text or image */}
                 <BigLogo />
               </Link>

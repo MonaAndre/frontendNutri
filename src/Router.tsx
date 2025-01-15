@@ -13,11 +13,11 @@ import { Home } from "./pages/Home";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/frontendNutri/",
     element: <Layout />,
     children: [
       {
-        path: "/userStartPage",
+        path: "/frontendNutri/userStartPage",
         element: (
           <Suspense fallback={<Spinner />}>
             <ProtectedRoute />
@@ -25,17 +25,17 @@ export const router = createBrowserRouter([
         ),
         children: [
           {
-            path: "/userStartPage/userProfile", 
+            path: "/frontendNutri/userStartPage/userProfile", 
             element: <UserProfile />,
           },
           {
-            path: "/userStartPage/userSettings", 
+            path: "/frontendNutri/userStartPage/userSettings", 
             element: <UserSettings />,
           },
         ],
       },
       {
-        path: "/register",
+        path: "/frontendNutri/register",
         element: (
           <Suspense fallback={<Spinner />}>
             <Register />
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/login",
+        path: "/frontendNutri/login",
         element: (
           <Suspense fallback={<Spinner />}>
             <Login />
@@ -51,7 +51,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/",
+        path: "/frontendNutri/",
         element: (
           <Suspense fallback={<Spinner />}>
             <Home />
@@ -59,7 +59,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/successReg",
+        path: "/frontendNutri/successReg",
         element: (
           <Suspense fallback={<Spinner />}>
             <SuccessReg />
@@ -67,7 +67,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/successDeleteUser",
+        path: "/frontendNutri/successDeleteUser",
         element: (
           <Suspense fallback={<Spinner />}>
             <SuccessDeleteUser />

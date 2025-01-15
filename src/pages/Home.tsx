@@ -109,7 +109,7 @@ export const Home = () => {
           {/* <div className="">
              <Dropdown onFilterChange={handleFilterChange} />
           </div> */}
-         
+
           <button
             onClick={SearchProduct}
             className="border border-black dark:border-slate-400 flex justify-center items-center p-2 rounded-lg"
@@ -162,7 +162,7 @@ export const Home = () => {
                             </div>
 
                             <span className="text-gray-600 self-end">
-                             
+
                               {product.nf_calories} kkal
                             </span>
                           </div>
@@ -191,8 +191,8 @@ export const Home = () => {
         </div>
 
         <div className="calcCals">
-<SideChatModal/>
-       
+          <SideChatModal />
+
         </div>
       </div>
     </>
