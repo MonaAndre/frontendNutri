@@ -24,14 +24,14 @@ export const UserProfile = () => {
         }
       } catch (error) {
         console.error('Failed to fetch user details:', error);
-        navigate("/login")
+        navigate("/frontendNutri//login")
       } finally {
         setLoading(false);
       }
     };
 
     if (!userState.isLoggedIn) {
-      navigate('/login');
+      navigate('/frontendNutri//login');
     } else if (!userState.userDetails) {
       fetchUserDetails();
     } else {

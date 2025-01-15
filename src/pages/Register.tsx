@@ -78,7 +78,7 @@ export const Register = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('http://localhost:3000/api/createUserAccount', {
+      const response = await fetch('https://backendnutri.onrender.com/api/createUserAccount', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -90,7 +90,7 @@ export const Register = () => {
   
       if (response.ok && result.user?.email) {
         localStorage.setItem("CreatedUsersMail", result.user.email);
-        navigate('/successReg');
+        navigate('/frontendNutri/successReg');
       } else if (response.status === 400) {
         setErrors((prevErrors) => ({
           ...prevErrors,

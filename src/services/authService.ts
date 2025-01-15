@@ -1,7 +1,7 @@
 import { IUserResponse } from '../models/IUserResponse';
 import { IAuthResponse } from '../models/IAuthResponse';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const signIn = async (email: string, password: string): Promise<IUserResponse> => {
   const response = await fetch(`${API_BASE_URL}/signIn`, {

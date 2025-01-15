@@ -13,14 +13,14 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   const checkAuth = async () => {
     try {
-      const authResponse = await fetch('http://localhost:3000/api/checkAuth', {
+      const authResponse = await fetch('https://backendnutri.onrender.com/api/checkAuth', {
         credentials: 'include',
       });
       const authResult = await authResponse.json();
 
       if (authResult.isAuthenticated && authResult.user?.id) {
         const userDetailsResponse = await fetch(
-          `http://localhost:3000/api/getUserDetails/${authResult.user.id}`,
+          `https://backendnutri.onrender.com/api/getUserDetails/${authResult.user.id}`,
           { credentials: 'include' }
         );
         const userDetails = await userDetailsResponse.json();

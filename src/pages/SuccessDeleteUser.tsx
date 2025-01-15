@@ -15,7 +15,7 @@ export const SuccessDeleteUser = () => {
         </p>
 
         <button
-          onClick={() => navigate('/register')}
+          onClick={() => navigate('/frontendNutri/register')}
           className="btn primary-btn"
         >
           Registrera konto

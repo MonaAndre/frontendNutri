@@ -17,7 +17,7 @@ export const Login: React.FC = () => {
       const data = await signIn(email, password); // data är av typen IUserResponse
       if (data.user) {
         userDispatch({ type: UserActionType.SET_USER, payload: data.user });
-        navigate(`/userStartPage/userProfile`);
+        navigate(`/frontendNutri/userStartPage/userProfile`);
       } else {
         alert('Login failed');
       }
