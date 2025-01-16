@@ -2,7 +2,7 @@ import { useReducer, useEffect, ReactNode } from 'react';
 import { UserStateContext, UserDispatchContext, initialState } from './UserContext';
 import { UserActionType, userReducer } from '../reducers/UserReducer';
 
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 interface UserProviderProps {
   children: ReactNode;
@@ -13,14 +13,16 @@ export const UserProvider = ({ children }: UserProviderProps) => {
 
   const checkAuth = async () => {
     try {
-      const authResponse = await fetch('https://backendnutri.onrender.com/api/checkAuth', {
+      const authResponse = await fetch(`${API_BASE_URL}/api/checkAuth`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
       });
       const authResult = await authResponse.json();
 
       if (authResult.isAuthenticated && authResult.user?.id) {
         const userDetailsResponse = await fetch(
-          `https://backendnutri.onrender.com/api/getUserDetails/${authResult.user.id}`,
+          `${API_BASE_URL}/api/getUserDetails/${authResult.user.id}`,
           { credentials: 'include' }
         );
         const userDetails = await userDetailsResponse.json();

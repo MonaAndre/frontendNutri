@@ -4,7 +4,7 @@ import { IAuthResponse } from '../models/IAuthResponse';
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const signIn = async (email: string, password: string): Promise<IUserResponse> => {
-  const response = await fetch(`${API_BASE_URL}/signIn`, {
+  const response = await fetch(`${API_BASE_URL}/api/signIn`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
@@ -14,7 +14,7 @@ export const signIn = async (email: string, password: string): Promise<IUserResp
 };
 
 export const signOut = async (): Promise<{ message: string }> => {
-  const response = await fetch(`${API_BASE_URL}/signOut`, {
+  const response = await fetch(`${API_BASE_URL}/api/signOut`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
@@ -23,7 +23,7 @@ export const signOut = async (): Promise<{ message: string }> => {
 };
 
 export const checkAuth = async (): Promise<IAuthResponse> => {
-  const response = await fetch(`${API_BASE_URL}/checkAuth`, {
+  const response = await fetch(`${API_BASE_URL}/api/checkAuth`, {
     credentials: 'include',
   });
 
@@ -35,7 +35,7 @@ export const checkAuth = async (): Promise<IAuthResponse> => {
 };
 
 export const getUserDetails = async (userId: string): Promise<IUserResponse> => {
-  const response = await fetch(`${API_BASE_URL}/getUserDetails/${userId}`, {
+  const response = await fetch(`${API_BASE_URL}/api/getUserDetails/${userId}`, {
     method: 'POST',
     credentials: 'include',
   });
